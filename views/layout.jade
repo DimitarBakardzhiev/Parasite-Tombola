@@ -26,9 +26,16 @@ html
               li
                 a(href='/all') Всички участници
               li
+                a(href='/changePassword') Смяна на парола
+              li
                 a(href='/logout') Излез
     .container.body-content
       br
+      if warning
+        .alert.alert-dismissable.alert-warning
+          button.close(type="button" data-dismiss="alert") ×
+          h4 Внимание!
+          p #{warning}
       block content
       hr
       footer.text-center

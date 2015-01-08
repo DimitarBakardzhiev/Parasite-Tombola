@@ -3,6 +3,8 @@
  */
 var Player = require('mongoose').model('Player');
 var passport = require('passport');
+var encryption = require('../encryption');
+var User = require('mongoose').model('User');
 
 module.exports = function (app) {
     app.get('/', function (req, res) {
@@ -14,7 +16,12 @@ module.exports = function (app) {
     app.post('/register', function (req, res) {
         Player.find({ phoneNumber: req.body.phoneNumber }, function (err, players) {
             if (players.length > 0) {
-                res.redirect('/register');
+                res.render('register', {
+                    title: 'Записване',
+                    year: new Date().getFullYear(),
+                    user: req.user,
+                    warning: 'Телефонният номер вече е зает!'
+                });
             } else {
                 var player = new Player({
                     firstName: req.body.firstName,
@@ -61,5 +68,43 @@ module.exports = function (app) {
     app.get('/logout', function (req, res) {
         req.logout();
         res.redirect('/');
+    });
+    app.get('/changePassword', function (req, res) {
+        if (req.user) {
+            res.render('changePassword', { title: 'Смяна на парола', year: new Date().getFullYear(), user: req.user })
+        } else {
+            res.redirect('/login');
+        }
+    });
+    app.post('/changePassword', function (req, res) {
+        if (req.user.passwordHash != encryption.generateHashedPassword(req.user.salt, req.body.oldPassword)) {
+            res.render('changePassword', {
+                title: 'Смяна на парола',
+                year: new Date().getFullYear(),
+                user: req.user,
+                warning: 'Въведената стара парола е грешна!'
+            });
+        } else if (req.body.newPassword != req.body.confirmPassword) {
+            res.render('changePassword', {
+                title: 'Смяна на парола',
+                year: new Date().getFullYear(),
+                user: req.user,
+                warning: 'Новата парола и потвърдената парола се различават!'
+            });
+        } else if (req.body.newPassword.length <= 3) {
+            res.render('changePassword', {
+                title: 'Смяна на парола',
+                year: new Date().getFullYear(),
+                user: req.user,
+                warning: 'Паролата трябва да бъде по-дълга от 3 символа!'
+            });
+        } else {
+            User.findById(req.user._id, function (err, user) {
+                user.passwordHash = encryption.generateHashedPassword(user.salt, req.body.newPassword);
+                user.save(function (err, savedUser) {
+                    res.redirect('/');
+                });
+            });
+        }
     });
 }
