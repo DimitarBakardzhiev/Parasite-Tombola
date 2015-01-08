@@ -1,0 +1,41 @@
+﻿doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    title #{title} - My Express Application
+    link(rel='stylesheet', type='text/css', href='/stylesheets/bootstrap_cyborg.min.css')
+    link(rel='stylesheet', type='text/css', href='/stylesheets/style.css')
+    script(src='/javascripts/modernizr-2.6.2.js')
+  body
+    .navbar.navbar-inverse.navbar-fixed-top
+      .container
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='/') Томбола
+        .navbar-collapse.collapse
+          ul.nav.navbar-nav
+            li
+              a(href='/register') Записване
+            li
+              a(href='/conditions') Условия
+            if user
+              li
+                a(href='/all') Всички участници
+              li
+                a(href='/logout') Излез
+    .container.body-content
+      br
+      block content
+      hr
+      footer.text-center
+        p &copy; #{year} - Томбола
+
+    script(src='/javascripts/jquery-1.10.2.js')
+    script(src='/javascripts/bootstrap.js')
+    script(src='/javascripts/respond.js')
+
+    block scripts

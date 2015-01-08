@@ -1,0 +1,25 @@
+//
+   Created by Dimitar on 8.1.2015 г..
+extends layout
+block content
+   form.form-horizontal.jumbotron.water-mark(action="/register" method="post")
+      fieldset
+         legend Записване
+         .form-group
+            label.col-lg-2.control-label(for="firstName") Име
+            .col-lg-10
+               input.form-control(type="text" id="firstName" name="firstName" required placeholder="Име")
+         .form-group
+            label.col-lg-2.control-label(for="lastName") Фамилия
+            .col-lg-10
+               input.form-control(type="text" id="lastName" name="lastName" required placeholder="Фамилия")
+         .form-group
+            label.col-lg-2.control-label(for="phoneNumber") Телефон за връзка
+            .col-lg-10
+               input.form-control(type="text" id="phoneNumber" name="phoneNumber" required placeholder="0812345678")
+         p
+            | Със записването за томболата Вие се съгласявате с&nbsp
+            a(href="/conditions") условията
+            | &nbspна играта.
+         button.btn.btn-primary(type="submit") Запиши се!
+

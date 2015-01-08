@@ -1,0 +1,16 @@
+//
+   Created by Dimitar on 8.1.2015 г..
+extends layout
+block content
+   form.form-horizontal.jumbotron.water-mark(action="/login" method="post")
+      fieldset
+         legend Влизане като администратор
+         .form-group
+            label.col-lg-2.control-label(for="username") Потребителско име
+            .col-lg-10
+               input.form-control(type="text" id="username" name="username" required placeholder="Потребителско име")
+         .form-group
+            label.col-lg-2.control-label(for="password") Парола
+            .col-lg-10
+               input.form-control(type="password" id="password" name="password" required placeholder="*****")
+         button.btn.btn-primary(type="submit") Влез!

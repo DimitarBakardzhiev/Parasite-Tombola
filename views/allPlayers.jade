@@ -1,0 +1,19 @@
+//
+   Created by Dimitar on 8.1.2015 г..
+extends layout
+block content
+   if !players.length
+      h2 Все още няма участници!
+   else
+      table.table.table-striped.table-hover.water-mark
+         thead
+            tr
+               th Име
+               th Фамилия
+               th Телефон за връзка
+         tbody
+            each player in players
+               tr
+                  td #{player.firstName}
+                  td #{player.lastName}
+                  td #{player.phoneNumber}
