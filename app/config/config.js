@@ -12,7 +12,7 @@ module.exports = {
     },
     production: {
         rootPath: rootPath,
-        db: 'todo',
+        db: 'mongodb://Inzaghi:123456@ds029911.mongolab.com:29911/parasitetombola',
         port: process.env.PORT || 3030
     }
 }

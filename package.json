@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "description": "Tombola",
   "main": "app.js",
+  "engines": {
+    "node": "0.10.x",
+    "npm": "1.4.x"
+  },
   "author": {
     "name": "Dimitar Bakardzhiev",
     "email": ""
