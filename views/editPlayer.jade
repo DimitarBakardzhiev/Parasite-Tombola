@@ -1,0 +1,20 @@
+//
+   Created by Dimitar on 9.1.2015 г..
+extends layout
+block content
+   form.form-horizontal.jumbotron.water-mark(action="/edit/#{player._id}" method="put")
+      fieldset
+         legend Редактиране
+         .form-group
+            label.col-lg-2.control-label(for="firstName") Име
+            .col-lg-10
+               input.form-control(type="text" id="firstName" name="firstName" value="#{player.firstName}" required placeholder="Име")
+         .form-group
+            label.col-lg-2.control-label(for="lastName") Фамилия
+            .col-lg-10
+               input.form-control(type="text" id="lastName" name="lastName" value="#{player.lastName}" required placeholder="Фамилия")
+         .form-group
+            label.col-lg-2.control-label(for="phoneNumber") Телефон за връзка
+            .col-lg-10
+               input.form-control(type="text" id="phoneNumber" name="phoneNumber" value="#{player.phoneNumber}" required placeholder="0812345678")
+         button.btn.btn-primary(type="submit") Редактиране

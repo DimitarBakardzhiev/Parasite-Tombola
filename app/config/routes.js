@@ -62,7 +62,8 @@ module.exports = function (app) {
                         title: 'Всички участници',
                         year: new Date().getFullYear(),
                         players: all,
-                        user: req.user});
+                        user: req.user
+                    });
                 });
             } else {
                 res.redirect('/login');
@@ -122,11 +123,29 @@ module.exports = function (app) {
             });
         }
     });
-    app.get('/getPlayers', function (req, res) {
-        var controller = require('../controllers/playerController');
-        controller.find('54af05c5eec2fa94139c63d8').then(function (players) {
-            console.log(players);
+    app.get('/edit/:id', function (req, res) {
+        playerController.find(req.params.id).then(function (player) {
+            res.render('editPlayer', {
+                title: 'Смяна на парола',
+                year: new Date().getFullYear(),
+                user: req.user,
+                player: player
+            })
         });
-        return res.end;
+    });
+    app.put('/edit/:id', function (req, res) {
+        playerController.update(req.params.id, {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            phoneNumber: req.body.phoneNumber
+        }).then(function (player) {
+            return res.render('allPlayers', {
+                title: 'Всички участници',
+                year: new Date().getFullYear(),
+                players: all,
+                user: req.user,
+                success: 'Промяната е извършена успешно!'
+            });
+        })
     });
 }

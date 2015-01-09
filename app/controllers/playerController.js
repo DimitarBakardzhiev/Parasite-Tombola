@@ -31,8 +31,14 @@ function create(player) {
     return deffered.promise;
 }
 
-function update(player) {
-    
+function update(id, updatedData) {
+    var deffered = q.defer();
+    Player.findByIdAndUpdate(id, updatedData, function (player) {
+        deffered.resolve(player);
+        console.log(player);
+    });
+
+    return deffered.promise;
 }
 
 function remove(id) {
