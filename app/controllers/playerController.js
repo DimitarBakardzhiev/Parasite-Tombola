@@ -23,15 +23,25 @@ function find(id) {
 }
 
 function create(player) {
+    var deffered = q.defer();
+    Player.create(player, function (err, newPlayer) {
+        deffered.resolve(newPlayer);
+    });
 
+    return deffered.promise;
 }
 
 function update(player) {
-
+    
 }
 
 function remove(id) {
+    var deffered = q.defer();
+    Player.findByIdAndRemove(id, function (err, player) {
+        deffered.resolve(player);
+    });
 
+    return deffered.promise;
 }
 
 module.exports = {

@@ -64,13 +64,6 @@ module.exports = function (app) {
                         players: all,
                         user: req.user});
                 });
-                //Player.find({}, function (err, all) {
-                //    res.render('allPlayers', {
-                //        title: 'Всички участници',
-                //        year: new Date().getFullYear(),
-                //        players: all,
-                //        user: req.user});
-                //});
             } else {
                 res.redirect('/login');
             }
