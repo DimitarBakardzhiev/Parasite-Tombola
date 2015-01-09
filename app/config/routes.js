@@ -8,7 +8,7 @@ var User = require('mongoose').model('User');
 
 module.exports = function (app) {
     app.get('/', function (req, res) {
-        res.render('index', { title: 'Express', year: new Date().getFullYear(), user: req.user });
+        res.render('index', { title: 'Начало', year: new Date().getFullYear(), user: req.user });
     });
     app.get('/register', function (req, res) {
         res.render('register', { title: 'Записване', year: new Date().getFullYear(), user: req.user })
@@ -35,7 +35,12 @@ module.exports = function (app) {
                         console.log(newPlayer);
                     });
 
-                res.redirect('/');
+                res.render('index', {
+                    title: 'Начало',
+                    year: new Date().getFullYear(),
+                    user: req.user,
+                    success: 'Успешно се записахте за томболата!'
+                });
             }
         });
     });

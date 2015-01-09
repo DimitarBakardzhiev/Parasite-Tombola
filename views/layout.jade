@@ -36,6 +36,11 @@ html
           button.close(type="button" data-dismiss="alert") ×
           h4 Внимание!
           p #{warning}
+      if success
+        .alert.alert-dismissable.alert-success
+          button.close(type="button" data-dismiss="alert") ×
+          h4 Поздравления!
+          p #{success}
       block content
       hr
       footer.text-center
