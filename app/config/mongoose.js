@@ -1,9 +1,10 @@
 /**
  * Created by Dimitar on 8.1.2015 г..
  */
-module.exports = function () {
+
+module.exports = function (config) {
     var mongoose = require('mongoose');
-    mongoose.connect('mongodb://localhost/tombola');
+    mongoose.connect(config.db);
 
     var db = mongoose.connection;
     db.on('error', console.error.bind(console, 'connection error:'));

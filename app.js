@@ -10,7 +10,7 @@ var env = process.env.NODE_ENV || 'development';
 var config = require('./app/config/config')[env];
 
 require('./app/config/express')(app, express, config);
-require('./app/config/mongoose')();
+require('./app/config/mongoose')(config);
 require('./app/config/passport')();
 require('./app/config/routes')(app);
 
