@@ -2,6 +2,6 @@
 
 block content
   .jumbotron.text-center.water-mark
-    h1 Parasite
-    h2 Eyewear
-    h2 Todo!!
+    h2 #{greeting}
+    if user
+      a.btn.btn-warning.btn-xs(href="/greeting") Редактиране

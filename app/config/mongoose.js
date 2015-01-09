@@ -13,4 +13,5 @@ module.exports = function () {
 
     require('./../models/player')(mongoose);
     require('./../models/user')(mongoose);
+    require('./../models/greeting')(mongoose);
 }

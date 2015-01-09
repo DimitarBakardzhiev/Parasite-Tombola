@@ -1,0 +1,12 @@
+//
+   Created by Dimitar on 9.1.2015 г..
+extends layout
+block content
+   form.form-horizontal.jumbotron.water-mark(action="/greeting" method="post")
+      fieldset
+         legend Редактиране на началния поздрав
+         .form-group
+            label.col-lg-2.control-label(for="greeting") Начален поздрав
+            .col-lg-10
+               textarea.form-control(rows="3" id="greeting" name="greeting") #{greeting}
+         button.btn.btn-primary(type="submit") Редактиране

@@ -11,6 +11,7 @@ block content
                th Име
                th Фамилия
                th Телефон за връзка
+               th Е-мейл
                th Редактиране
                th Изтриване
          tbody
@@ -18,7 +19,12 @@ block content
                tr
                   td #{player.firstName}
                   td #{player.lastName}
-                  td #{player.phoneNumber}
+                  td
+                     if player.phoneNumber
+                        | #{player.phoneNumber}
+                     else
+                        | Не е въведен телефон
+                  td #{player.email}
                   td
                      a.btn.btn-warning.btn-xs(href="/edit/#{player._id}") Редактиране
                   td

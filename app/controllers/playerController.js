@@ -33,9 +33,13 @@ function create(player) {
 
 function update(id, updatedData) {
     var deffered = q.defer();
-    Player.findByIdAndUpdate(id, updatedData, function (player) {
+    Player.findByIdAndUpdate(id, {
+        firstName: updatedData.firstName,
+        lastName: updatedData.lastName,
+        email: updatedData.email,
+        phoneNumber: updatedData.phoneNumber
+    }, function (ерр, player) {
         deffered.resolve(player);
-        console.log(player);
     });
 
     return deffered.promise;
