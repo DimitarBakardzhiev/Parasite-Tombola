@@ -11,9 +11,15 @@ block content
                th Име
                th Фамилия
                th Телефон за връзка
+               th Редактиране
+               th Изтриване
          tbody
             each player in players
                tr
                   td #{player.firstName}
                   td #{player.lastName}
                   td #{player.phoneNumber}
+                  td
+                     a.btn.btn-warning.btn-xs(href="/edit/#{player._id}") Редактиране
+                  td
+                     a.btn.btn-danger.btn-xs(href="/delete/#{player._id}") Изтриване

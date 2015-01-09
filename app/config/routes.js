@@ -14,6 +14,15 @@ module.exports = function (app) {
         res.render('register', { title: 'Записване', year: new Date().getFullYear(), user: req.user })
     });
     app.post('/register', function (req, res) {
+        if (req.body.firstName.length < 3 || req.body.firstName.length > 30
+            || req.body.lastName.length < 3 || req.body.lastName.length > 30) {
+            return res.render('register', {
+                title: 'Записване',
+                year: new Date().getFullYear(),
+                user: req.user,
+                warning: 'Името и фамилията трябва да са между 3 и 30 символа!'
+            });
+        }
         Player.find({ phoneNumber: req.body.phoneNumber }, function (err, players) {
             if (players.length > 0) {
                 res.render('register', {
