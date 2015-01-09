@@ -5,6 +5,7 @@ var Player = require('mongoose').model('Player');
 var passport = require('passport');
 var encryption = require('../encryption');
 var User = require('mongoose').model('User');
+var playerController = require('../controllers/playerController');
 
 module.exports = function (app) {
     app.get('/', function (req, res) {
@@ -56,13 +57,20 @@ module.exports = function (app) {
     app.get('/all',
         function (req, res) {
             if (req.user) {
-                Player.find({}, function (err, all) {
+                playerController.all().then(function (all) {
                     res.render('allPlayers', {
                         title: 'Всички участници',
                         year: new Date().getFullYear(),
                         players: all,
                         user: req.user});
                 });
+                //Player.find({}, function (err, all) {
+                //    res.render('allPlayers', {
+                //        title: 'Всички участници',
+                //        year: new Date().getFullYear(),
+                //        players: all,
+                //        user: req.user});
+                //});
             } else {
                 res.redirect('/login');
             }
@@ -120,5 +128,12 @@ module.exports = function (app) {
                 });
             });
         }
+    });
+    app.get('/getPlayers', function (req, res) {
+        var controller = require('../controllers/playerController');
+        controller.find('54af05c5eec2fa94139c63d8').then(function (players) {
+            console.log(players);
+        });
+        return res.end;
     });
 }
