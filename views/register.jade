@@ -7,23 +7,29 @@ block content
          legend Записване
          .form-group
             label.col-lg-2.control-label(for="firstName") Име
+               span.required-field-star &nbsp*
             .col-lg-10
                input.form-control(type="text" id="firstName" name="firstName" required)
          .form-group
             label.col-lg-2.control-label(for="lastName") Фамилия
+               span.required-field-star &nbsp*
             .col-lg-10
                input.form-control(type="text" id="lastName" name="lastName" required)
          .form-group
             label.col-lg-2.control-label(for="email") Е-мейл
+               span.required-field-star &nbsp*
             .col-lg-10
                input.form-control(type="email" id="email" name="email" required)
          .form-group
             label.col-lg-2.control-label(for="phoneNumber") Телефон за връзка
             .col-lg-10
                input.form-control(type="text" id="phoneNumber" name="phoneNumber")
-         p
+         p.smaller
             | Със записването за томболата Вие се съгласявате с&nbsp
             a(href="/conditions") условията
             | &nbspна играта.
+         p.smaller Полетата отбелязани със&nbsp
+            span.required-field-star &nbsp*
+            | &nbsp са задължителни
          button.btn.btn-primary(type="submit") Запиши се!
 
