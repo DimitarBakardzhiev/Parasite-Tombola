@@ -4,7 +4,7 @@ extends layout
 block content
    form.form-horizontal.jumbotron.water-mark(action="/register" method="post")
       fieldset
-         legend Записване
+         legend Регистрация
          .form-group
             label.col-lg-2.control-label(for="firstName") Име
                span.required-field-star &nbsp*
@@ -25,11 +25,11 @@ block content
             .col-lg-10
                input.form-control(type="text" id="phoneNumber" name="phoneNumber")
          p.smaller
-            | Със записването за томболата Вие се съгласявате с&nbsp
-            a(href="/conditions") условията
-            | &nbspна играта.
+            | С участието си в настоящата томбола, Вие се съгласявате с приложимите&nbsp
+            a(href="/conditions") условия
+            | .
          p.smaller Полетата, отбелязани със&nbsp
             span.required-field-star &nbsp*
             | &nbsp,&nbspса задължителни!
-         button.btn.btn-primary(type="submit") Запиши се!
+         button.btn.btn-primary(type="submit") Запишете се!
 

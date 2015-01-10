@@ -19,7 +19,7 @@ html
         .navbar-collapse.collapse
           ul.nav.navbar-nav
             li
-              a(href='/register') Записване
+              a(href='/register') Регистрация
             li
               a(href='/conditions') Условия
             if user
@@ -44,9 +44,11 @@ html
       div.wrapper
         block content
       hr
-      footer.text-left.panel-footer.water-mark
-        p &copy; #{year} - Parasite Eyewear е френска марка за очила, или ... повече от това. Вече 14 години дръзките дизайнерски модели от най-висококачествения титан налагат нови стандарти в представите за носене на очила.
-
+      footer.text-justify.panel-footer.water-mark
+        p
+          a(href="http://www.parasite-eyewear.com/" target="blank") Parasite Eyewear
+          | &nbspе френска марка за очила, или ... повече от това. Вече 14 години дръзките дизайнерски модели, изработени от най-висококачествения титан, налагат нови стандарти в представите за носене на очила. Поляризираните стъкла, създават перфектна видимост и оптимален комфорт за очите, а разработените от Parasite "стерео рамки" правят очилата изключително леки, но много здрави - с нулев натиск върху носа и ушите.
+          div.text-center &copy; #{year}
     script(src='/javascripts/jquery-1.10.2.js')
     script(src='/javascripts/bootstrap.js')
     script(src='/javascripts/respond.js')
