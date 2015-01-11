@@ -21,9 +21,9 @@ module.exports = function () {
         function(username, password, done) {
             process.nextTick(function () {
                 User.findOne({ username: username }, function(err, user) {
-                    var passwordHash = encryption.generateHashedPassword(user.salt, password);
                     if (err) { return done(err); }
                     if (!user) { return done(null, false); }
+                    var passwordHash = encryption.generateHashedPassword(user.salt, password);
                     if (user.passwordHash != passwordHash) { return done(null, false); }
                     return done(null, user);
                 })
