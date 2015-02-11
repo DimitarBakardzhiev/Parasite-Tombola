@@ -5,27 +5,30 @@ block content
    if !players.length
       h2 Все още няма участници!
    else
+      button.names-only.btn.btn-info Покажи само имена
+      br
+      br
       table.table.table-striped.table-hover.water-mark
          thead
             tr
                th Име
                th Фамилия
-               th Телефон за връзка
-               th Е-мейл
-               th Редактиране
-               th Изтриване
+               th.hideable Телефон за връзка
+               th.hideable Е-мейл
+               th.hideable Редактиране
+               th.hideable Изтриване
          tbody
             each player in players
                tr
                   td #{player.firstName}
                   td #{player.lastName}
-                  td
+                  td.hideable
                      if player.phoneNumber
                         | #{player.phoneNumber}
                      else
                         | Не е въведен телефон
-                  td #{player.email}
-                  td
+                  td.hideable #{player.email}
+                  td.hideable
                      a.btn.btn-warning.btn-xs(href="/edit/#{player._id}") Редактиране
-                  td
+                  td.hideable
                      a.btn.btn-danger.btn-xs(href="/delete/#{player._id}") Изтриване
