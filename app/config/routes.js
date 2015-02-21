@@ -25,6 +25,9 @@ module.exports = function (app) {
         res.render('register', { title: 'Записване', year: new Date().getFullYear(), user: req.user })
     });
     app.post('/register', function (req, res) {
+        res.redirect('/');
+        // the tombola is over
+        /*
         if (req.body.firstName.length < 3 || req.body.firstName.length > 30
             || req.body.lastName.length < 3 || req.body.lastName.length > 30) {
             return res.render('register', {
@@ -65,7 +68,7 @@ module.exports = function (app) {
                     });
                 });
             }
-        });
+        });*/
     });
     app.get('/all',
         function (req, res) {
